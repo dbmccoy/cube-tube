@@ -1,0 +1,14 @@
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/UnityEngine.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/UnityEditor.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/UnityEngine.Analytics.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Mono.Cecil.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Unity.DataContract.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/david/ZeroG/ZeroG/Temp/bin/Debug/Mono.Cecil.Mdb.dll

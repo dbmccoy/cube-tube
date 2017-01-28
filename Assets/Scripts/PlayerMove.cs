@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour {
 	public float stepSpeed;
 	float h;
 	float v;
+	public float moveSpeed;
 	Rigidbody rb;
 	float step;
 	//make this global
@@ -45,6 +46,7 @@ public class PlayerMove : MonoBehaviour {
 	void Begin(){
 		running = true;
 		GameObject.Find("CubeSpawner").GetComponent<Spawner>().Begin();
+
 		splash.enabled = false;
 		StartCoroutine(Timer(aclIncTimer));
 	}
@@ -55,7 +57,8 @@ public class PlayerMove : MonoBehaviour {
 			if(Input.anyKeyDown || Input.touchCount > 0){
 				Begin();
 			}
-			rb.MovePosition(transform.position + new Vector3(h,-fallSpeed,v)*Time.deltaTime*stepSpeed);
+			rb.MovePosition(transform.position + new Vector3(h * moveSpeed,-fallSpeed,v * moveSpeed)
+															*Time.deltaTime*stepSpeed);
 			return;
 		}
 
@@ -77,8 +80,9 @@ public class PlayerMove : MonoBehaviour {
 
 		//do moving
 
-		rb.MovePosition(transform.position + new Vector3(h,-fallSpeed,v)*Time.deltaTime*stepSpeed);
-		cam.transform.rotation = Quaternion.Euler(90+(10*-v*.5f),0,20*-h);
+		rb.MovePosition(transform.position + new Vector3(h * moveSpeed,-fallSpeed,v * moveSpeed)
+											*Time.deltaTime*stepSpeed);
+		cam.transform.rotation = Quaternion.Euler(90+(10*-v*.5f),0,10*-h);
 		rb.AddForce(new Vector3(0, -1, 0) * Time.deltaTime * _aclAmt, ForceMode.Acceleration);
 
 		//speed update

@@ -20,12 +20,14 @@ public class Spawner : MonoBehaviour {
 	public bool running;
 	public bool spawnToAxis;
 	public bool spawnAtAngle;
+	public bool cube;
 
 	public float scaleMax;
 	private float _aclAdd;
 	public Transform axis;
 	public GameObject cubeHolder;
 	Transform pool;
+	Transform player;
 
 	// Use this for initialization
 	List<GameObject> PoolObjs;
@@ -35,6 +37,7 @@ public class Spawner : MonoBehaviour {
         _quantity = RollDensity(density);
         Spawn(_quantity);
 		PoolObjs = new List<GameObject>();
+		player = GameObject.Find("Player").transform;
 		pool = GameObject.Find("pool").transform;
 		GeneratePool(poolAmt);
 	}
@@ -68,6 +71,8 @@ public class Spawner : MonoBehaviour {
 		Spawn(_quantity);
 	}
 
+	public float cubeEnergy;
+
     void Spawn(int n, float angle = 0, float _x = 0, float _y = 0, float _z = 0) {
 		if(!running){
 			return;
@@ -93,6 +98,11 @@ public class Spawner : MonoBehaviour {
 			obj.transform.localScale = new Vector3(1,1,1) * Random.Range(1f,scaleMax);
 			if(spawnToAxis){
 				obj.transform.parent = axis;
+			}
+			if(cube){
+				Cube c = obj.GetComponent<Cube>();
+				c.homing = true;
+				c.Attack(player,cubeEnergy);
 			}
         }
         _nextTimer = Random.Range(0, 1) * (frequency);

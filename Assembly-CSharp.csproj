@@ -47,19 +47,23 @@
   <ItemGroup>
      <Compile Include="Assets\Cube.cs" />
      <Compile Include="Assets\CubeDeleter.cs" />
-     <Compile Include="Assets\FallScript.cs" />
-     <Compile Include="Assets\LevelController.cs" />
-     <Compile Include="Assets\LockPosToObj.cs" />
-     <Compile Include="Assets\PlayerMove.cs" />
-     <Compile Include="Assets\RandomRotation.cs" />
-     <Compile Include="Assets\Restart.cs" />
-     <Compile Include="Assets\SoundEmitter.cs" />
-     <Compile Include="Assets\Spawner.cs" />
-     <Compile Include="Assets\Spedometer.cs" />
-     <Compile Include="Assets\SpeedMultiplier.cs" />
-     <Compile Include="Assets\Utils.cs" />
+     <Compile Include="Assets\PipeSystem.cs" />
+     <Compile Include="Assets\Scripts\FallScript.cs" />
+     <Compile Include="Assets\Scripts\HomingCube.cs" />
+     <Compile Include="Assets\Scripts\LevelController.cs" />
+     <Compile Include="Assets\Scripts\LockPosToObj.cs" />
+     <Compile Include="Assets\Scripts\PlayerMove.cs" />
+     <Compile Include="Assets\Scripts\RandomRotation.cs" />
+     <Compile Include="Assets\Scripts\Restart.cs" />
+     <Compile Include="Assets\Scripts\SoundEmitter.cs" />
+     <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\Spedometer.cs" />
+     <Compile Include="Assets\Scripts\SpeedMultiplier.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\Pipe.cs" />
+     <Compile Include="Assets\Scripts\Tutorial\Player.cs" />
+     <Compile Include="Assets\Scripts\Utils.cs" />
+     <Compile Include="Assets\Scripts\testie.cs" />
      <Compile Include="Assets\audioTrigger.cs" />
-     <Compile Include="Assets\testie.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

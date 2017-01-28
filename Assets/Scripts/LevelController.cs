@@ -41,6 +41,7 @@ public class LevelController : MonoBehaviour {
 	void NextLevel() {
 		level++;
 		spwnr.density = spwnr.density +.1f;
+		spwnr.cubeEnergy = spwnr.cubeEnergy + 100f;
 		currentColor = mat.color;
 		int index = Random.Range(0,colors.Length);
 		targetColor = colors[level];
