@@ -82,7 +82,7 @@ public class PlayerMove : MonoBehaviour {
 
 		rb.MovePosition(transform.position + new Vector3(h * moveSpeed,-fallSpeed,v * moveSpeed)
 											*Time.deltaTime*stepSpeed);
-		cam.transform.rotation = Quaternion.Euler(90+(10*-v*.5f),0,10*-h);
+		cam.transform.rotation = Quaternion.Euler(90+(6*-v*.5f),0,6*-h);
 		rb.AddForce(new Vector3(0, -1, 0) * Time.deltaTime * _aclAmt, ForceMode.Acceleration);
 
 		//speed update

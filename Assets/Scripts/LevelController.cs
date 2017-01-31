@@ -16,7 +16,15 @@ public class LevelController : MonoBehaviour {
 
 	float[] levels;
 
-	// Use this for initialization
+    // Use this for initialization
+    void Awake(){
+        QualitySettings.vSyncCount = 0;  // VSync must be disabled or disable in quality manually 
+        Application.targetFrameRate = 60;
+    }
+
+
+
+
 	void Start () {
 		levels = new float[]{20,40,60,80,100,120};
 		level = 0;
