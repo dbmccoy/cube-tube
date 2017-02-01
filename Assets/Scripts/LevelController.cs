@@ -7,6 +7,7 @@ public class LevelController : MonoBehaviour {
 	public int level;
 	public Spawner spwnr;
 	public Material mat;
+
 	private PlayerMove plyr;
 	private float initSpeed;
 
@@ -22,15 +23,12 @@ public class LevelController : MonoBehaviour {
         Application.targetFrameRate = 60;
     }
 
-
-
-
 	void Start () {
-		levels = new float[]{20,40,60,80,100,120};
+		levels = new float[]{20,40,60,80,100,120,140,160,180,200};
 		level = 0;
 		plyr = GetComponent<PlayerMove>();
 		initSpeed = plyr.speed;
-		colors = new Color[]{Color.cyan,Color.blue, Color.red, Color.green, Color.magenta, Color.yellow};
+		colors = new Color[]{Color.cyan,Color.blue, Color.magenta, Color.red, new Color32(30, 144, 255, 255), Color.green,  new Color32(255, 140, 0,255) };
 		currentColor = Color.cyan;
 		targetColor = Color.cyan;
 	}

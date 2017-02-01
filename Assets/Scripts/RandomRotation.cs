@@ -8,7 +8,7 @@ public class RandomRotation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		rotationDir = Random.Range(-1,1);
+		rotationDir = Random.Range(-1,2);
 	}
 	
 	// Update is called once per frame

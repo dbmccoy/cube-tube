@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour {
 	public GameObject cubeHolder;
 	public Spawner ringSpawner;
 	public Spawner cubeSpawner;
+    CharacterController cc;
 	float hoff;
 	float voff;
 
@@ -35,6 +36,7 @@ public class PlayerMove : MonoBehaviour {
 		//PlayerPrefs.DeleteAll();
 		step = Time.deltaTime;
 		rb = GetComponent<Rigidbody>();
+        cc = GetComponent<CharacterController>();
 		highscore.text = PlayerPrefs.GetFloat("highscore").ToString();
 		h = 0; v = 0;
 		if(Application.platform == RuntimePlatform.IPhonePlayer){
@@ -46,6 +48,7 @@ public class PlayerMove : MonoBehaviour {
 	void Begin(){
 		running = true;
 		GameObject.Find("CubeSpawner").GetComponent<Spawner>().Begin();
+        GameObject.FindGameObjectWithTag("background").GetComponent<DontDestroy>().Begin();
 
 		splash.enabled = false;
 		StartCoroutine(Timer(aclIncTimer));
@@ -57,9 +60,9 @@ public class PlayerMove : MonoBehaviour {
 			if(Input.anyKeyDown || Input.touchCount > 0){
 				Begin();
 			}
-			rb.MovePosition(transform.position + new Vector3(h * moveSpeed,-fallSpeed,v * moveSpeed)
-															*Time.deltaTime*stepSpeed);
-			return;
+            cc.Move(new Vector3(h * moveSpeed, -fallSpeed, v * moveSpeed) * Time.deltaTime * stepSpeed);
+
+            return;
 		}
 
 		timer = timer + Time.deltaTime;
@@ -80,12 +83,16 @@ public class PlayerMove : MonoBehaviour {
 
 		//do moving
 
-		rb.MovePosition(transform.position + new Vector3(h * moveSpeed,-fallSpeed,v * moveSpeed)
-											*Time.deltaTime*stepSpeed);
-		cam.transform.rotation = Quaternion.Euler(90+(6*-v*.5f),0,6*-h);
-		rb.AddForce(new Vector3(0, -1, 0) * Time.deltaTime * _aclAmt, ForceMode.Acceleration);
+        cc.Move(rb.velocity + new Vector3(h*moveSpeed,-fallSpeed,v*moveSpeed)*Time.deltaTime*stepSpeed);
 
-		//speed update
+		//rb.MovePosition(transform.position + new Vector3(h * moveSpeed,-fallSpeed,v * moveSpeed)
+		//									*Time.deltaTime*stepSpeed);
+
+		cam.transform.rotation = Quaternion.Euler(90+(6*-v*.5f),0,6*-h);
+		rb.AddForce(new Vector3(0, -1f, 0) * Time.deltaTime * _aclAmt, ForceMode.Acceleration);
+
+        //speed update
+        //fallSpeed = fallSpeed + .1f * Time.deltaTime;
 		speed = Utils.round((rb.velocity.y * -1)+fallSpeed,1);
 		spd.UpdateSpeed(timer);
 		if(timer > PlayerPrefs.GetFloat("highscore")){
@@ -118,11 +125,10 @@ public class PlayerMove : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision other){
-		if(other.transform.tag == "cube" && !invulnerable){
-			//PlayerPrefs.SetFloat("highscore",speed);
-			Restart();
-		}
-	
+        if (other.transform.tag == "cube" && !invulnerable){
+            //PlayerPrefs.SetFloat("highscore",speed);
+            Restart();
+        }
 	}
 
 	void OnTriggerEnter(Collider other){
@@ -138,9 +144,13 @@ public class PlayerMove : MonoBehaviour {
 	}
 		
 
-	void Restart(){
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
+	public void Restart(){
+        if (!invulnerable)
+        {
+            GameObject.FindGameObjectWithTag("background").GetComponent<DontDestroy>().Restart();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
 
 
 
